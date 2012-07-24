@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stddef.h>
+#include <string>
+#include <iostream>
 
 const int MAXNODES= 100;
 
@@ -28,7 +28,8 @@ Tree Create3(labeltype l,Tree T1,Tree T2,Tree T3);
 node Root(Tree T);
 void MAKENULL(Tree T);
 
-const cellspace cellspace;
+cellspace cellspace;
+list avail; // pointing to spaces available
 node Parent(node n,Tree T){ //Return the Parent of node n of Tree T
 	for (int p=1;p<MAXNODES;p++){
 		list l = T.headers[p];
@@ -74,9 +75,17 @@ Tree Create0(labeltype l){
 	Tree new_T;
 	new_T.headers[1] = 0;
 	new_T.labels[1] = l;
+	return new_T;
 };
 
-Tree Create1(labeltype l,Tree T1);
+Tree Create1(labeltype l,Tree T1){
+	Tree new_T;
+	for (node i=1;i<=MAXNODES;i++){ //Copy T1 into a new Tree
+		new_T.headers[i] = T1.headers[i];
+		new_T.labels[i] = T1.labels[i]
+	}
+	return new_T;
+}
 Tree Create2(labeltype l,Tree T1,Tree T2);
 Tree Create3(labeltype l,Tree T1,Tree T2,Tree T3);
 node Root(Tree T){
