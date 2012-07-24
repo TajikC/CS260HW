@@ -1,1 +1,1 @@
-==This is a repository for the our CS260 homework assignments
+==This is a repository for our CS260 homework assignments
